@@ -1,0 +1,178 @@
+var disclaimer_cookies = disclaimer_cookies || {};
+
+disclaimer_cookies.consent_cookie_name = "cookies_consent";
+disclaimer_cookies.should_show = true;
+disclaimer_cookies.analytics_ok = false;
+disclaimer_cookies.videos_ok = false;
+disclaimer_cookies.functional_ok = false;
+disclaimer_cookies.cookieStorage = {
+	cookies: {}, 
+	loadItems: () => {
+		disclaimer_cookies.cookieStorage.cookies = document.cookie.split(";").map(cookie => cookie.split("=")).reduce((acc, [key, value]) => ({ ...acc, [key.trim()]: value }), {});
+	}, 
+	getItem: (key) => {
+		return disclaimer_cookies.cookieStorage.cookies[key];
+	}, 
+	setItem: (key, value) => {
+		disclaimer_cookies.cookieStorage.cookies[key] = value;
+		document.cookie = (key + "=" + value + ";");
+	}
+};
+disclaimer_cookies.shouldShowPopin = () => { return disclaimer_cookies.should_show; };
+disclaimer_cookies.openPopin = () => { 
+	if ( ! disclaimer_cookies.shouldShowPopin()) {
+		var disclaimer_cookies_consent = disclaimer_cookies.getConsent();
+		if (disclaimer_cookies_consent) {
+			jQuery("#popin_cookies input[name=disclaimer_cookies_consent_analytics]").prop("checked", (disclaimer_cookies_consent.analytics ? true : false));
+			jQuery("#popin_cookies input[name=disclaimer_cookies_consent_videos]").prop("checked", (disclaimer_cookies_consent.videos ? true : false));
+			jQuery("#popin_cookies input[name=disclaimer_cookies_consent_functional]").prop("checked", (disclaimer_cookies_consent.functional ? true : false));
+		}
+	}
+	jQuery("#popin_cookies").addClass("popin_show"); 
+};
+disclaimer_cookies.closePopin = () => { jQuery("#popin_cookies").removeClass("popin_show").removeClass("popin_show_more"); };
+disclaimer_cookies.openPopinMore = () => {
+	if ( ! jQuery("#popin_cookies").hasClass("popin_show")) {
+		disclaimer_cookies.openPopin();
+	}
+	jQuery("#popin_cookies").addClass("popin_show_more"); 
+};
+disclaimer_cookies.closePopinMore = () => { 
+	jQuery("#popin_cookies").removeClass("popin_show_more");
+	if ( ! disclaimer_cookies.shouldShowPopin()) {
+		disclaimer_cookies.closePopin();
+	}
+};
+disclaimer_cookies.openDetails = ($li) => { $li.addClass("details_show"); };
+disclaimer_cookies.closeDetails = ($li) => { $li.removeClass("details_show"); };
+disclaimer_cookies.saveConsent = () => {
+	var cookies_consent_detail = ((jQuery("#popin_cookies.popin_show_more .popin_cookies_box").length > 0) ? true : false);
+	var cookies_consent = {
+		//"necessary": jQuery("#popin_cookies input[name=cookies_necessary]").is(":checked"), 
+		"necessary": true, 
+		"analytics": (cookies_consent_detail ? jQuery("#popin_cookies input[name=cookies_analytics]").is(":checked") : true), 
+		"videos": (cookies_consent_detail ? jQuery("#popin_cookies input[name=cookies_videos]").is(":checked") : true), 
+		//"": (cookies_consent_detail ? jQuery("#popin_cookies input[name=cookies_]").is(":checked") : true), 
+		"functional": (cookies_consent_detail ? jQuery("#popin_cookies input[name=cookies_functional]").is(":checked") : true)
+	};
+	disclaimer_cookies.cookieStorage.setItem(disclaimer_cookies.consent_cookie_name, JSON.stringify(cookies_consent));
+	disclaimer_cookies.doCookies();
+	disclaimer_cookies.closePopin();
+	disclaimer_cookies.should_show = false;
+};
+disclaimer_cookies.getConsent = () => {
+	var disclaimer_cookies_consent = disclaimer_cookies.cookieStorage.getItem(disclaimer_cookies.consent_cookie_name);
+	if (disclaimer_cookies_consent) {
+		disclaimer_cookies_consent = JSON.parse(disclaimer_cookies_consent);
+		if (jQuery.isPlainObject(disclaimer_cookies_consent)) {
+			return disclaimer_cookies_consent;
+		}
+	}
+	return false;
+};
+disclaimer_cookies.btOpenPopin = function(e) {
+	e.preventDefault();
+	disclaimer_cookies.openPopin();
+	return false;
+};
+disclaimer_cookies.btClosePopin = function(e) {
+	e.preventDefault();
+	disclaimer_cookies.closePopin();
+	return false;
+};
+disclaimer_cookies.btOpenPopinMore = function(e) {
+	e.preventDefault();
+	disclaimer_cookies.openPopinMore();
+	return false;
+};
+disclaimer_cookies.btClosePopinMore = function(e) {
+	e.preventDefault();
+	disclaimer_cookies.closePopinMore();
+	return false;
+};
+disclaimer_cookies.btToggleDetails = function(e) {
+	e.preventDefault();
+	//var $popin_cookies_li_details_title = jQuery(this);
+	var $popin_cookies_li_details = jQuery(this).closest("li");
+	if ($popin_cookies_li_details.hasClass("details_show")) {
+		disclaimer_cookies.closeDetails($popin_cookies_li_details);
+	} else {
+		disclaimer_cookies.closeDetails(jQuery("#popin_cookies .popin_cookies_options li.details_show"));
+		disclaimer_cookies.openDetails($popin_cookies_li_details);
+	}
+	return false;
+};
+disclaimer_cookies.btSaveConsent = function(e){
+	e.preventDefault();
+	disclaimer_cookies.saveConsent();
+	return false;
+};
+disclaimer_cookies.btAcceptConsent = function(e) {
+	e.preventDefault();
+	jQuery("#popin_cookies input:checkbox").prop("checked", true);
+	disclaimer_cookies.saveConsent();
+	return false;
+};
+disclaimer_cookies.btRejectConsent = function(e) {
+	e.preventDefault();
+	jQuery("#popin_cookies input:checkbox").prop("checked", false);
+	disclaimer_cookies.saveConsent();
+	return false;
+};
+disclaimer_cookies.doCookies = () => {
+	var disclaimer_cookies_consent = disclaimer_cookies.getConsent();
+	if (disclaimer_cookies_consent) {
+		if (disclaimer_cookies_consent.analytics && ( ! disclaimer_cookies.analytics_ok)) {
+			//console.log("Executando cookies do analytics");
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-98805633-1', 'auto');
+			ga('send', 'pageview');
+			disclaimer_cookies.analytics_ok = true;
+		}
+		if (disclaimer_cookies_consent.videos && ( ! disclaimer_cookies.videos_ok)) {
+			//console.log("Executando cookies de vídeos");
+			var $disclaimer_cookies_all_videos = jQuery("iframe[src^='https://www.youtube-nocookie.com/']");
+			$disclaimer_cookies_all_videos.each(function() {
+				var $disclaimer_cookies_video = jQuery(this);
+				var disclaimer_cookies_video_src = $disclaimer_cookies_video.attr("src");
+				$disclaimer_cookies_video.attr("src", disclaimer_cookies_video_src.replace("youtube-nocookie.com/", "youtube.com/"));
+			});
+			disclaimer_cookies.videos_ok = true;
+		}
+		if (disclaimer_cookies_consent.functional && ( ! disclaimer_cookies.functional_ok)) {
+			//console.log("Executando cookies funcionais");
+			(function() {
+				var addthis_widget = document.createElement("script"); addthis_widget.type = "text/javascript"; addthis_widget.async = true;
+				addthis_widget.src = "https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-587fcc6119702145";
+				var script_tags = document.getElementsByTagName("script")[0]; script_tags.parentNode.insertBefore(addthis_widget, script_tags);
+			})();
+			disclaimer_cookies.functional_ok = true;
+		}
+	}
+};
+disclaimer_cookies.init = () => {
+	disclaimer_cookies.cookieStorage.loadItems();
+	disclaimer_cookies.should_show = ( ! disclaimer_cookies.cookieStorage.getItem(disclaimer_cookies.consent_cookie_name));
+	jQuery("#popin_cookies .popin_cookies_close").click(disclaimer_cookies.btClosePopinMore);
+	jQuery("#popin_cookies .popin_cookies_title h5").click(disclaimer_cookies.btToggleDetails);
+	jQuery("#popin_cookies .popin_cookies_save").click(disclaimer_cookies.btSaveConsent);
+	jQuery("#popin_cookies .popin_cookies_accept").click(disclaimer_cookies.btAcceptConsent);
+	jQuery("#popin_cookies .popin_cookies_reject").click(disclaimer_cookies.btRejectConsent);
+	jQuery("#popin_cookies .popin_cookies_more").click(disclaimer_cookies.btOpenPopinMore);
+	if (disclaimer_cookies.shouldShowPopin()) {
+		disclaimer_cookies.openPopin();
+	} else {
+		disclaimer_cookies.doCookies();
+	}
+	jQuery(".popin_cookies_show").click(disclaimer_cookies.btOpenPopinMore);
+};
+
+
+jQuery(document).ready(function($) {
+
+	disclaimer_cookies.init();
+
+});

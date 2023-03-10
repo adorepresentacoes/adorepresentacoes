@@ -1,0 +1,2 @@
+var BRFw = BRFw || {};
+BRFw.Pagina = { linkRaiz : '/', idioma : 'pt-BR' };

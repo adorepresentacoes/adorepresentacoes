@@ -1,0 +1,219 @@
+var BRFw = BRFw || {};
+BRFw.Formulario = {};
+
+BRFw.Formulario.addFormIcone = function (campo, icone) {
+	$(function() {
+		var $campo = $("#"+campo);
+		var $pai_campo = $campo.parent();
+		if( ! $pai_campo.find("img[alt="+icone+"]").length) { // Não tem ícone ainda
+			//if ($("#"+campo).parent().find('label').length) { // Tem label para acompanhar o ícone
+				$pai_campo.prepend($("<img />").attr("alt",icone).attr("src", BRFw.Pagina.linkRaiz+"BRFw/imgs/" + icone + "16.png").addClass('icone'));
+				/*$label = $("#"+campo).siblings().filter("label[for="+campo+"]");
+				$label.append( $("<img />").attr("alt",icone).attr("src","../BRFw/imgs/"+icone+"10.png") );*/
+				//$label.after( $("<img />").attr("alt",icone).attr("src","../BRFw/imgs/"+icone+"10.png") );
+			//}
+		}
+		BRFw.Formulario.aplicarIcone(campo , icone);
+	});
+};
+BRFw.Formulario.completarLinkAJAX = function (link, $item_preencher, icone) {
+	var prefixo_ok = (icone + '_');
+	var limite_chars = (icone.length + 1);
+	var item_ok = '';
+	var campo_ok = '';
+	var nome = $item_preencher.attr('name');
+	var subitem_abre = nome.indexOf('[');
+	var subitem_fecha = nome.indexOf(']');
+	// Os nomes dos campos aparentam tipo forte
+	if ((subitem_abre > 0) && (subitem_fecha > (subitem_abre + 2))) {
+		campo_ok = nome.substring(subitem_abre + 1, subitem_fecha);
+		item_ok = nome.substring(0, subitem_abre);
+		if (item_ok.substring(0, limite_chars) === prefixo_ok)
+			item_ok = item_ok.substring(limite_chars, item_ok.length);
+	} else {
+		// Os nomes dos campos aparentam tipo fraco
+		if ((subitem_abre > 0) && (subitem_fecha === (subitem_abre + 1))) {
+			item_ok = nome.substring(0, subitem_abre);
+			if (item_ok.substring(0, limite_chars) === prefixo_ok)
+				item_ok = item_ok.substring(limite_chars, item_ok.length);
+			// Recuperando nome original
+			var id = $item_preencher.attr('id').replace((item_ok + "_"), "");
+			var nome_original_abre = id.lastIndexOf('.');
+			var nome_original_fecha = id.lastIndexOf('_');
+			var nome_original_ok = item_ok;
+			if (nome_original_abre && (nome_original_fecha > nome_original_abre))
+				nome_original_ok = id.substring(0, nome_original_fecha);
+			campo_ok = nome_original_ok;
+		} else {
+			// Campos simples
+			campo_ok = nome;
+			if (campo_ok.substring(0, limite_chars) === prefixo_ok)
+				campo_ok = campo_ok.substring(limite_chars, campo_ok.length);
+		}
+	}
+	var link_ok = link;
+	if (item_ok)
+		link_ok += ('&item=' + item_ok);
+	if (campo_ok)
+		link_ok += ('&campo=' + campo_ok);
+	return link_ok;
+};
+BRFw.Formulario.tratarCampoAJAX = function ($fieldset_item, $item_preencher, ui) {
+	if (($fieldset_item.length === 1) && ($fieldset_item.hasClass("aprimorado-rel"))) {
+		var $item_existente = $fieldset_item.find("input[type='hidden'][value='" + ui.item.value + "']");
+		if ($item_existente.length === 0) {
+			var $novo_item = $item_preencher.parent().clone();
+			$novo_item.find("input:first-of-type , img.icone , .ui-helper-hidden-accessible").remove();
+			$novo_item.find("label").html(ui.item.label);
+			$novo_item.find('input[type="hidden"]').val(ui.item.value);
+			$novo_item.addClass("adicionado");
+			$novo_item.find("label").click(function() {
+				//$(this).parent().remove();
+				$novo_item.remove();
+			});
+			$fieldset_item.append($novo_item);
+		} else {
+			$item_existente.parent().effect("pulsate", { times:1 }, 2000);
+		}
+		$item_preencher.val("");
+	} else {
+		$item_preencher.siblings('input[type="hidden"]').val(ui.item.value);
+		$item_preencher.val(ui.item.label).addClass("selecionado");
+	}
+	return true;
+};
+BRFw.Formulario.aplicarIcone = function (campo, icone) {
+	$(function() {
+		/*
+		$("#"+campo).parent().find("img[alt="+icone+"]").bind('click', function(){
+			alert("Teste "+campo+" ("+icone+")");
+		});
+		*/
+		switch (icone) {
+			case "arquivos":
+			break;
+			case "abrir":
+			break;
+			case "lupa": // Fazer um autocompletar?
+			break;
+			case "autocompletar":
+			case "autobuscar":
+				// Chamada AJAX - autocompletar e autobuscar - para seleção entre grande quantidade de itens (jQuery)
+				$("input." + icone).each(function() { // ("#"+campo) >> Nos subitens não existe ID
+					var $item_preencher = $(this);
+					//$item_preencher.css('outline', '3px solid red');
+					if ( ! $item_preencher.hasClass('dinamico')) {
+						var link = ((icone === "autocompletar") ? BRFw.Formulario.linkAutocompletar : BRFw.Formulario.linkAutobuscar);
+						$item_preencher.addClass('dinamico').autocomplete({
+							source: link,
+							minLength: 3, 
+							search: function(event, ui) {
+								var link_ok = BRFw.Formulario.completarLinkAJAX(link, $item_preencher, icone);
+								//link += ('&nome=' + nome);
+								$(this).autocomplete('option', 'source', link_ok);
+								$("." + icone).removeClass("pesquisando");
+								$item_preencher.siblings('input[type="hidden"]').val('');
+								$item_preencher.removeClass("selecionado").addClass("pesquisando");
+							}, 
+							response: function(event, ui) {
+								$item_preencher.removeClass("pesquisando");
+							}, 
+							select: function(event, ui) {
+								var $fieldset_item = $item_preencher.parents("fieldset.item");
+								// Foi seleção ou foi solicitada inclusão?
+								if (ui.item.value !== '{{+}}') {
+									// Seleção
+									BRFw.Formulario.tratarCampoAJAX($fieldset_item, $item_preencher, ui);
+								} else {
+									// Inclusão, chama novamente via AJAX
+									var link_ok = BRFw.Formulario.completarLinkAJAX(link, $item_preencher, icone);
+									var label_ok = ui.item.label;
+									label_ok = label_ok.substr(22); // Remove o '<span class="new-rel">'
+									label_ok = label_ok.substr(0, (label_ok.length - 7)); // Remove o '</span>'
+									link_ok += ('&n_term=' + label_ok);
+									$.ajax({
+										url: link_ok,
+										beforeSend: function(xhr) {
+											// Antes de enviar
+											$item_preencher.addClass("adicionando");
+											//xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+										}
+									}).done(function(data) {
+										// Incluído com sucesso
+										var data_ok = $.parseJSON(data);
+										console.log(data, data_ok);
+										var novo_ui = ui;
+										novo_ui.item.label = data_ok[0].label;
+										novo_ui.item.value = data_ok[0].value;
+										BRFw.Formulario.tratarCampoAJAX($fieldset_item, $item_preencher, novo_ui);
+										//if (console && console.log)
+										//	console.log( "Sample of data:", data.slice(0, 100));
+									//}).fail(function() {
+									//	alert( "error" );
+									}).always(function() {
+										// No sucesso ou no erro
+										$item_preencher.removeClass("adicionando");
+										//alert( "complete" );
+									});
+								}
+								return false;
+							}
+						}).data("ui-autocomplete")._renderItem = function (ul, item) {
+							return $("<li></li>")
+								.data("item.autocomplete", item)
+								.append("<a>" + item.label + "</a>")
+								.appendTo(ul);
+						};
+						$item_preencher.parent().find("img[alt="+icone+"]").bind('click', function(){
+							$item_preencher.autocomplete('search');
+							console.log('clicou!');
+						});
+					}
+				});
+			break;
+			case "paleta":
+			break;
+			case "calendario_distante":
+			case "nascimento":
+				if (campo) {
+					var objData = new Date();
+					//$("#"+campo).datepicker( {showMonthAfterYear:false, minDate:'-90Y', maxDate:'-9Y', yearRange: ((objData.getFullYear() - 130) + ":" + objData.getFullYear()), showOn:'focus', changeYear: true} );
+					$("#"+campo).datepicker( {changeMonth:true, changeYear:true, yearRange: ((objData.getFullYear() - 130) + ":" + objData.getFullYear())} );
+					$("#"+campo).parent().find("img[alt="+icone+"]").bind('click', function(){
+						$("#"+campo).datepicker('show');
+					});
+				}
+			break;
+			case "calendario":
+				if (campo) {
+					$("#"+campo).datepicker();
+					$("#"+campo).parent().find("img[alt="+icone+"]").bind('click', function(){
+						$("#"+campo).datepicker('show');
+					});
+				}
+			break;
+			case "relogio":
+			break;
+			case "calendario-relogio":
+				if (campo) {
+					$("#"+campo).datetimepicker({ timeFormat: 'HH:mm:ss' });
+					$("#"+campo).parent().find("img[alt="+icone+"]").bind('click', function(){
+						$("#"+campo).datetimepicker('show');
+					});
+				}
+			break;
+			case "calendario-horario":
+				if (campo) {
+					$("#"+campo).datetimepicker({ timeFormat: 'HH:mm:00' });
+					$("#"+campo).parent().find("img[alt="+icone+"]").bind('click', function(){
+						$("#"+campo).datetimepicker('show');
+					});
+				}
+			break;
+			case "ajuda":
+			break;
+			default:
+			break;
+		}
+	});
+};

@@ -1,0 +1,5 @@
+$(document).ready(function() {
+	$(".page > .retorno").addClass("dinamico").click(function() {
+		$(this).slideUp("slow", function() { $(this).remove(); });
+	});
+});

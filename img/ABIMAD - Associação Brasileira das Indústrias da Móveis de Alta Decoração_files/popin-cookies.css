@@ -1,0 +1,197 @@
+#popin_cookies {
+	background-color: rgba(0,0,0,0.8);
+	box-sizing: border-box;
+	display: none;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	transition: opacity 1s 0s linear;
+	width: 100%;
+	z-index: 10000;
+}
+#popin_cookies.popin_show {
+	display: block;
+	opacity: 1;
+	pointer-events: all;
+}
+#popin_cookies .popin_cookies_banner {
+	background-color: #1C1C1B;
+	/*border-top: 1px solid #444444;*/
+	border-radius: 5px;
+	bottom: 0;
+	box-shadow: 0px -1px 0px #444;
+	box-sizing: border-box;
+	display: block;
+	height: auto;
+	left: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 20px 10px;
+	position: absolute;
+	width: 100%;
+}
+#popin_cookies.popin_show_more .popin_cookies_banner {
+	display: none;
+}
+#popin_cookies .popin_cookies_banner p {
+	color: #ffffff;
+	display: inline; /*inline-block;*/
+	/*width: 50%;*/
+}
+#popin_cookies .popin_cookies_banner a, 
+#popin_cookies .popin_cookies_banner a:hover {
+	color: #ffffff;
+	font-weight: bold;
+	text-decoration: underline;
+}
+/*
+#popin_cookies .popin_cookies_nav {
+	float: right;
+	padding-left: 20px;
+}
+*/
+#popin_cookies .popin_cookies_box {
+	background-color: #ffffff;
+	border-radius: 5px;
+	box-sizing: border-box;
+	display: none;
+	height: auto;
+	left: 50%;
+	margin: 0;
+	max-height: 95vh;
+	max-width: 650px;
+	overflow: auto;
+	padding: 30px 20px 20px 20px;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: 95%;
+}
+#popin_cookies.popin_show_more .popin_cookies_box {
+	display: block;
+}
+#popin_cookies .popin_cookies_close {
+	background-color: transparent;
+	border: 0 none transparent;
+	box-sizing: border-box;
+	cursor: pointer;
+	height: 40px;
+	padding: 10px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 40px;
+	z-index: 1000;
+}
+#popin_cookies .popin_cookies_close span {
+	display: none;
+}
+#popin_cookies .popin_cookies_box a {
+	color: #c20e1a;
+}
+#popin_cookies .popin_cookies_options {
+	display: block;
+	list-style: none;
+}
+#popin_cookies .popin_cookies_options > li {
+	display: block;
+	margin: 0 0 5px 0;
+}
+#popin_cookies .popin_cookies_title {
+	background-color: #ececec;
+	border-radius: 5px;
+	box-sizing: border-box;
+	display: block;
+	height: auto;
+	overflow: hidden;
+	padding: 10px 12px;
+}
+#popin_cookies .popin_cookies_title h5 {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0 0 0 20px;
+	position: relative;
+}
+#popin_cookies .popin_cookies_title h5::before {
+	border-right: 1px solid #4a6e78;
+	border-bottom: 1px solid #4a6e78;
+	content: " ";
+	height: 7px;
+	left: 0;
+	margin-right: 10px;
+	position: absolute;
+	top: calc(50% - 4px);
+	transform: rotate(-45deg);
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	width: 7px;
+}
+#popin_cookies .details_show .popin_cookies_title h5::before {
+	transform: rotate(45deg);
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+#popin_cookies .popin_cookies_title .popin_cookies_fixed, 
+#popin_cookies .popin_cookies_title .popin_cookies_switch {
+	display: block;
+	float: right;
+	font-size: 0.85em;
+}
+#popin_cookies .popin_cookies_title .popin_cookies_switch > label {
+	display: inline-block;
+}
+#popin_cookies .popin_cookies_content {
+	box-sizing: border-box;
+	display: block;
+	height: auto;
+	max-height: 0px;
+	overflow: hidden;
+	transition: all 0.5s 0s linear;
+}
+#popin_cookies .details_show .popin_cookies_content {
+	max-height: 100px;
+	overflow: auto;
+}
+#popin_cookies .popin_cookies_banner .popin_cookies_button, 
+#popin_cookies .popin_cookies_banner .popin_cookies_button:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+/*
+#popin_cookies .popin_cookies_banner .popin_cookies_button, 
+#popin_cookies .popin_cookies_box .popin_cookies_button, 
+#popin_cookies .popin_cookies_banner .popin_cookies_button:hover, 
+#popin_cookies .popin_cookies_box .popin_cookies_button:hover {
+	background-color: #333333;
+	border: 1px solid #ececec;
+	color: #ececec;
+	display: inline-block;
+	margin: 0 0 0 10px;
+	padding: 10px 15px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+#popin_cookies .popin_cookies_banner .popin_cookies_accept, 
+#popin_cookies .popin_cookies_banner .popin_cookies_accept:hover {
+	background-color: #ececec;
+	border-color: #ececec;
+	color: #000000;
+}
+#popin_cookies .popin_cookies_box .popin_cookies_button, 
+#popin_cookies .popin_cookies_box .popin_cookies_button:hover {
+	background-color: #c20e1a;
+	border-color: #c20e1a;
+	color: #ffffff;
+}
+*/
+#popin_cookies .popin_cookies_box .popin_cookies_save, 
+#popin_cookies .popin_cookies_box .popin_cookies_save:hover {
+	cursor: pointer;
+	float: right;
+	margin-top: 10px;
+}

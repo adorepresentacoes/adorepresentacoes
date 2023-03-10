@@ -1,0 +1,42 @@
+button{
+    background-color: rgb(83, 83, 121);
+    border-radius: 10px;
+    border: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    
+  }
+
+  .menu {
+
+   
+    width: 100%;
+    padding: 10px auto;
+    background-color: rgb(184, 184, 236);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+   
+
+}
+
+.menu ul li{
+    
+    display: inline-block; 
+    margin: 0 5px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+}
+
+.menu ul li a:hover {
+
+    width: auto;
+    height:auto ;
+    border-radius: 5px;
+    color: rgb(133, 133, 216);
+    background-color: white;
+    
+    
+  
+}

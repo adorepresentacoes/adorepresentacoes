@@ -1,0 +1,207 @@
+var BRFw = BRFw || {};
+BRFw.MinhaGaleria = {};
+
+BRFw.MinhaGaleria.iniciarOrdenacao = function (event, ui) {
+	var $movivel = $(event.srcElement).closest(".galeria-item");
+	var indice_original = $movivel.index();
+	$movivel.attr("data-indice-original", indice_original);
+};
+BRFw.MinhaGaleria.finalizarOrdenacao = function (event, ui) {
+	var $movivel = $(event.srcElement).closest(".galeria-item");
+	var $galeria = $movivel.closest("form");
+	if ($galeria.hasClass("ativo")) {
+		var cod = parseInt($movivel.find("input[name='galeria-id']").val());
+		var indice_original = parseInt($movivel.attr("data-indice-original"));
+		var indice_atual = $movivel.index();
+		var i_inicial = 0;
+		var i_final = 0;
+		var ajuste = 0;
+		var ordem_inicial = parseInt($movivel.find(".galeria-item-ordem").text().trim());
+		var ordem_final = 0;
+		if (indice_original > indice_atual) {
+			// Verifica a atualização de ordem pelo item posterior
+			var $proximo_movivel = $movivel.next();
+			if ($proximo_movivel.length)
+				$movivel.find(".galeria-item-ordem").text($proximo_movivel.find(".galeria-item-ordem").text());
+			// Configurando valores para ajustar os demais itens
+			i_inicial = (indice_atual + 1);
+			i_final = indice_original;
+			ajuste = 1;
+		} else {
+			// Verifica a atualização de ordem pelo item anterior
+			var $anterior_movivel = $movivel.prev();
+			if ($anterior_movivel.length)
+				$movivel.find(".galeria-item-ordem").text($anterior_movivel.find(".galeria-item-ordem").text());
+			// Configurando valores para ajustar os demais itens
+			i_inicial = indice_original;
+			i_final = (indice_atual - 1);
+			ajuste = -1;
+		}
+		ordem_final = parseInt($movivel.find(".galeria-item-ordem").text().trim());
+		// Executa o AJAX de atualização da ordem
+		if ((ordem_inicial !== ordem_final) && (ordem_final > 0)) {
+			if ( ! $galeria.hasClass("carregando")) {
+				$galeria.addClass("carregando");
+				$.ajax({
+					method: "POST",
+					url: $galeria.attr("action"),
+					data: { ajax: 1, cmd: "ordenar_imagem", ordem: ordem_final, cod: cod }
+				}).done(function(resultado) {
+					var erro = true;
+					if (resultado) {
+						var retorno = $.parseJSON(resultado);
+						if (retorno) {
+							if (retorno.status) {
+								// Ajustando demais itens (se o AJAX foi bem sucedido
+								for (var i = i_inicial; i <= i_final; i++) {
+									var $outro_movivel = $galeria.find(".galeria-item").eq(i);
+									if ($outro_movivel.length) {
+										var ajuste_ordem = parseInt($outro_movivel.find(".galeria-item-ordem").text().trim());
+										ajuste_ordem += ajuste;
+										$outro_movivel.find(".galeria-item-ordem").val(ajuste_ordem);
+									}
+								}
+								$movivel.attr("data-indice-original", indice_atual);
+								erro = false;
+							}
+						}
+					}
+					if (erro) {
+						$galeria.removeClass("ativo");
+						alert("Ocorreu um problema ao salvar a nova ordem. RClique em \"Minhas Imagens\" no menu para continuar.");
+					}
+				}).fail(function() {
+					$galeria.removeClass("ativo");
+					alert("Ocorreu um problema ao salvar a nova ordem. Clique em \"Minhas Imagens\" no menu para continuar.");
+				}).always(function() {
+					$galeria.removeClass("carregando");
+				});
+			} else
+				alert("Existem alterações sendo salvas, aguarde para fazer novas alterações.");
+		}
+	} else
+		alert("Ocorreu um problema com a ordem dos itens na galeria e qualquer modificação feita não será salva. Clique em \"Minhas Imagens\" no menu para atualizar a página e tentar novamente.");
+};
+BRFw.MinhaGaleria.excluirImagem = function (event, ui) {
+	var $bt_exluir_item_galeria = $(event.srcElement);
+	if ($bt_exluir_item_galeria.length) {
+		if (window.confirm("Você tem certeza de que deseja excluir esta imagem?")) {
+			var $item_galeria = $bt_exluir_item_galeria.closest(".galeria-item");
+			var $galeria = $item_galeria.closest("form");
+			if ( ! $galeria.hasClass("carregando")) {
+				$galeria.addClass("carregando");
+				$.ajax({
+					method: "POST",
+					url: $galeria.attr("action"),
+					data: { ajax: 1, cmd: "excluir_imagem", img: $item_galeria.find("input[name='galeria-imagem']").val(), galeria: $galeria.find("input[name='galeria']").val(), cod: $item_galeria.find("input[name='galeria-id']").val() }
+				}).done(function(resultado) {
+					var erro = true;
+					if (resultado) {
+						var retorno = $.parseJSON(resultado);
+						if (retorno)
+							if (retorno.status) {
+								// Ajustando demais itens (se o AJAX foi bem sucedido)
+								var $movivel = $bt_exluir_item_galeria.closest(".galeria-item");
+								var $moviveis = $movivel.closest("form");
+								var i_inicial = $movivel.index();
+								var i_final = $moviveis.find(".galeria-item").length;
+								for (var i = i_inicial; i <= i_final; i++) {
+									var $outro_movivel = $moviveis.find(".galeria-item").eq(i);
+									if ($outro_movivel.length) {
+										var ajuste_ordem = parseInt($outro_movivel.find(".galeria-item-ordem").text().trim());
+										ajuste_ordem -= 1;
+										$outro_movivel.find(".galeria-item-ordem").text(ajuste_ordem);
+									}
+								}
+								$movivel.remove();
+								erro = false;
+								window.location = $galeria.attr("action");
+							}
+					}
+					if (erro) {
+						$galeria.removeClass("ativo");
+						alert("Ocorreu um problema ao excluir a imagem. Clique em \"Minhas Imagens\" no menu para continuar.");
+					}
+				}).fail(function() {
+					$galeria.removeClass("ativo");
+					alert("Ocorreu um problema ao excluir a imagem. Clique em \"Minhas Imagens\" no menu para continuar.");
+				}).always(function() {
+					$galeria.removeClass("carregando");
+				});
+			} else
+				alert("Existem alterações sendo salvas, aguarde para fazer novas alterações. Clique em \"Minhas Imagens\" no menu para continuar.");
+		}
+	} else
+		alert("Ocorreu um problema ao excluir a imagem. Clique em \"Minhas Imagens\" no menu para continuar.");
+	event.preventDefault();
+	return false;
+};
+
+function imagemLogoPreview() {
+	imagemPreview(this, 'logo');
+}
+
+function imagemCapaPreview() {
+	imagemPreview(this, 'capa');
+}
+
+function imagemGaleriaPreview() {
+	imagemPreview(this, 'imagem');
+}
+
+function imagemPreview(input, placeholder) {
+	var $imagem_placeholder = $(".img-placeholder-" + placeholder + " img");
+	if ($imagem_placeholder.length === 0) {
+		$imagem_placeholder = $("<img />");
+		$(".img-placeholder-" + placeholder).append($imagem_placeholder);
+	}
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			$imagem_placeholder.attr("src", e.target.result);
+		};
+		reader.readAsDataURL(input.files[0]); // convert to base64 string
+	} else {
+		$imagem_placeholder.attr("src", $imagem_placeholder.attr("data-placeholder-original"));
+	}
+}
+
+function telOrCel(character) {
+	var $that = $(this);
+	if (character.match(/[0-9]/)) {
+		$that.setMask({ mask: '+99 (99) 99999-9999', autoTab: false}).val($that.val() + character);
+		$that.on('keyup', function (event) {
+			if (event.keyCode === 8 || event.keyCode === 46) {
+				$(this).setMask({ mask: '+99 (99) 9999-9999', autoTab: false, onOverflow: telOrCel});
+			}
+		});
+	}
+}
+
+jQuery(document).ready(function($) {
+
+	$.mask.masks.tel = { mask: '+99 (99) 9999-9999', fixedChars : '[+(),.:/ -]', autoTab: false, onOverflow: telOrCel};
+
+	$("form#meus-dados input#logo").change(imagemLogoPreview);
+	$("form#meus-dados input#capa").change(imagemCapaPreview);
+	$("[name=telefone]").setMask('tel'); //.setMask({ mask : '+99 (99) 99999-9999', fixedChars : '[+(),.:/ -]'});
+	$("[name=fax]").setMask("(99) 9999-9999");
+	$("[name=cep]").setMask("99999-999");
+	$("[name=ct_feira_tel]").setMask('tel'); //.setMask({ mask : '+99 (99) 99999-9999', fixedChars : '[+(),.:/ -]'});
+	$("[name=ct_marketing_tel]").setMask('tel'); //.setMask({ mask : '+99 (99) 99999-9999', fixedChars : '[+(),.:/ -]'});
+	$("[name=ct_financeiro_tel]").setMask('tel'); //.setMask({ mask : '+99 (99) 99999-9999', fixedChars : '[+(),.:/ -]'});
+	//$("[name=usuario_nascimento]").setMask("39/19/9999");
+	//BRFw.Formulario.addFormIcone('usuario_nascimento','nascimento');
+
+	$("form#meus-dados input#imagem").change(imagemGaleriaPreview);
+	$("form#minha-galeria").sortable({
+		revert: true, 
+		start: BRFw.MinhaGaleria.iniciarOrdenacao, 
+		update: BRFw.MinhaGaleria.finalizarOrdenacao
+	}).find(".galeria-item").each(function() {
+		var $item_galeria = $(this);
+		$item_galeria.find(".galeria-item-excluir").click(BRFw.MinhaGaleria.excluirImagem);
+	}).end().addClass('ativo');
+	$("form#minha-galeria.sortable , form#minha-galeria.sortable .galeria-item").disableSelection();
+
+});

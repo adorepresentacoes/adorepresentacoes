@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="wide wow-animation">
+	<head>
+		<title>ABIMAD - Associação Brasileira das Indústrias da Móveis de Alta Decoração</title>
+		<!-- META DADOS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="UTF-8" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta name="revisit-after" content="4" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="distribution" content="global" />
+		<meta name="rating" content="general" />
+		<!-- <meta name="robots" content="all, index, follow, noydir, noodp"/> -->
+		<meta name="author" content="BR Software e Elemento Design" />
+		<meta name="language" content="pt-br" />
+		<!-- mudar cor da barra de endereços nos smartphones -->
+		<meta name="theme-color" content="#DC0C22" />
+		<!-- Windows Phone -->
+		<meta name="msapplication-navbutton-color" content="#DC0C22" />
+		<!-- iOS Safari -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="#DC0C22" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" /> -->
+		<!--
+				<meta name="google-site-verification" content="###" />
+				<meta name="y_key" content="###">
+		-->
+		<base href="/">
+		<!-- LIKNS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+		<link rel="apple-touch-icon" href="imgs/ico.png" />
+		<link rel="apple-touch-icon-precomposed" href="imgs/ico.png" />
+		<link rel="shortcut icon" href="imgs/ico.png" />
+		<link rel="up" href="/" />
+		<link rel="next" href="/" />
+		<link rel="last" href="/" />
+		<link rel="previous" href="/" />
+		<link rel="author" href="http://www.brsoftware.net.br" />
+		<link rel="home" href="/" />
+		<link rel="first" href="/" />
+		<link rel="help" href="/" />
+		<link rel="stylesheet" href="css/stylesheets/screen.css?v=1.2" media="screen">
+		<link rel="stylesheet" href="css/ajustes.css" media="screen">		
+		<link rel="stylesheet" href="css/popin-cookies.css" media="screen">
+		<script language="javascript" type="text/javascript" src="/BRFw/js/pagina.js"></script>
+		<script language="javascript" type="text/javascript">
+BRFw.Pagina.linkRaiz = "/";
+</script>
+		<script language="javascript" type="text/javascript">
+BRFw.Pagina.idioma = "PT-br";
+</script>
+		<script language="javascript" type="text/javascript">
+var estandes_feira = [{"estande":"","produtos":"114,116,130,131,147,148,149,113,147,144,114,118,131,139,145,147,114,126,130,131,138,147,148,149,115,147,116,117,120,125,126,130,131,138,149,126,138,147,142,148,149,117,131,138,147,149,114,131,145,147,148,148,114,121,147,113,114,116,124,125,126,131,138,145,147,148,149,140,138,143,148,117,131,138,141,142,148,113,114,116,117,149,126,126,149,140,150"},{"estande":"A01","produtos":"144"},{"estande":"A02","produtos":"114,147,149"},{"estande":"A03","produtos":"144,126,138,149"},{"estande":"A04","produtos":"127"},{"estande":"A05","produtos":"113,129,147,125,140,147"},{"estande":"A07","produtos":"118,145,147"},{"estande":"A08","produtos":"125,139,140"},{"estande":"A09","produtos":"114,149"},{"estande":"A12","produtos":"115,115,147"},{"estande":"A13","produtos":"113,114,117,147"},{"estande":"A14","produtos":"125"},{"estande":"A15","produtos":"115,147"},{"estande":"A16","produtos":"113,114,116,118,124,139,140,145"},{"estande":"A17","produtos":"113,114,115,116,117,118,119,124,125,131,138,140,143,145,147,149"},{"estande":"A18","produtos":"127,140,145,147"},{"estande":"A19","produtos":"144"},{"estande":"A20","produtos":"116,117,120,122,126,128,131,138,141,142"},{"estande":"A22","produtos":"134"},{"estande":"A23","produtos":"117,126,131,138,147"},{"estande":"A39","produtos":"147,149"},{"estande":"B01","produtos":"144"},{"estande":"B02","produtos":"121,126,138,141,142,143"},{"estande":"B06","produtos":"116,117,120,125,131,138,147,149,116,117,131,138,141,142,147,148,149"},{"estande":"B07","produtos":"144"},{"estande":"B08","produtos":"113,114,116,117,118,122,124,125,129,131,138,139,140,141,145,113,114,117,118,124,125,126,129,130,131,133,136,138,140,142,145,147,148,149"},{"estande":"B09","produtos":"113,145"},{"estande":"B10","produtos":"134,147,149"},{"estande":"B11","produtos":"144"},{"estande":"B12","produtos":"118,119,145,118,119,145"},{"estande":"B14","produtos":"114,147"},{"estande":"B18","produtos":"115,147"},{"estande":"B19","produtos":"113,114,116,124,125,128,131,139,140,145"},{"estande":"B20","produtos":"144,147"},{"estande":"B23","produtos":"144,147,148,149"},{"estande":"B25","produtos":"117,126,138"},{"estande":"B26","produtos":"113,119,125,129,131,139,141,145,149"},{"estande":"B29","produtos":"114,117,134,147,149"},{"estande":"B30","produtos":"148"},{"estande":"B32","produtos":"114,116,131,138,141"},{"estande":"B36","produtos":"114,147"},{"estande":"B41","produtos":"147"},{"estande":"B42","produtos":"127"},{"estande":"B43","produtos":"113,114,115,116,124,131,138,140,141,145"},{"estande":"B47","produtos":"147"},{"estande":"B48","produtos":"117,120,131,138,147"},{"estande":"B49","produtos":"147,149"},{"estande":"C02","produtos":"117,120,126,131,138"},{"estande":"C04","produtos":"116,117,120,123,125,126,128,131,138,141,142,148,149"},{"estande":"C06","produtos":"120,126,135,138,144"},{"estande":"C08","produtos":"113,114,116,124,125,129,131,139,140,141,145"},{"estande":"C09","produtos":"117,134,138,142,149"},{"estande":"C10","produtos":"116,131,141"},{"estande":"C11","produtos":"116,117,122,131,141,147,116,117,128,131,142"},{"estande":"C14","produtos":"126,138"},{"estande":"C15","produtos":"138,147,144"},{"estande":"C16","produtos":"113,114,116,118,124,131,138,139,140,141,145"},{"estande":"C17","produtos":"144"},{"estande":"C20","produtos":"120,138,143,144"},{"estande":"C21","produtos":"148,149"},{"estande":"C22","produtos":"134"},{"estande":"C23","produtos":"113,116,117,125,130,131,138,142"},{"estande":"C26","produtos":"116,117,123,138,142,147,148,149"},{"estande":"C28","produtos":"113,114,118,122,124,129,131,139,140,141,145"},{"estande":"C29","produtos":"148"},{"estande":"C32","produtos":"114,147,149"},{"estande":"C33","produtos":"115,147"},{"estande":"C34","produtos":"114,116,117,131,138,141,142,148,149,126,147"},{"estande":"C35","produtos":"114,147"},{"estande":"C37","produtos":"140"},{"estande":"C40","produtos":"120,126,138"},{"estande":"D02","produtos":"125,139,140,150"},{"estande":"D05","produtos":"113,114,116,117,122,125,128,131,138,141,142,148,149"},{"estande":"D06","produtos":"120,135,138,115,124,125,140,150"},{"estande":"D08","produtos":"117,122,126,131,138,141,142,148,149"},{"estande":"D09","produtos":"116,124,133,138,140,141,145"},{"estande":"D10","produtos":"125,139,140"},{"estande":"D12","produtos":"128,142,147"},{"estande":"D13","produtos":"116,117,130,131,137,138,147"},{"estande":"D14","produtos":"114,116,122,123,128,141,142"},{"estande":"D16","produtos":"120,131,135,138"},{"estande":"D18","produtos":"149"},{"estande":"D20","produtos":"140,147"},{"estande":"D23","produtos":"116,122,123,125,128,131,141,142,148,149"},{"estande":"D25","produtos":"117,126,131,147,149"},{"estande":"D26","produtos":"126"},{"estande":"D28","produtos":"116,122,125,128,131,141,147,148,149"},{"estande":"D30","produtos":"133,147"},{"estande":"D32","produtos":"116,117,130,131,138,147"},{"estande":"E02","produtos":"120,126,138,143"},{"estande":"E05","produtos":"126,143,117,138"},{"estande":"E06","produtos":"116,117,128,141,142,148,149,147"},{"estande":"E07","produtos":"126,138"},{"estande":"E09","produtos":"116,117,120,128,131,141,142"},{"estande":"E12","produtos":"113,117,131,138,147"},{"estande":"E14","produtos":"148"},{"estande":"E20","produtos":"115,117,120,126,129,130,131,133,134,136,138,148,149"},{"estande":"E26","produtos":"148"},{"estande":"F01","produtos":"126"},{"estande":"F02","produtos":"126,149"},{"estande":"F03","produtos":"126,138,147"},{"estande":"F05","produtos":"143,114,147,149"},{"estande":"F07","produtos":"113,118,120,125,129,131,138,139,145,148,149"},{"estande":"F10","produtos":"116,117,122,131,138,141,142,148,149"},{"estande":"F13","produtos":""},{"estande":"F14","produtos":"114,127,145,147"},{"estande":"F16","produtos":"113,115,116,117,120,126,131,133,134,136,138,144,145,147,148,149"},{"estande":"F18","produtos":"114,149"}]
+</script>
+		<script language="javascript" type="text/javascript" src="/BRFw/js/jquery/jquery-1.8.2.js"></script>
+		<script language="javascript" type="text/javascript" src="/complementos/bra_contato/js/ct_contatos.js"></script>
+		<script language="javascript" type="text/javascript" src="BRAdmin.ContatoForms.erro_retorno_desconhecido = "Ocorreu um erro desconhecido ao tentar adicionar o objeto.";"></script>
+		<script language="javascript" type="text/javascript" src="BRAdmin.ContatoForms.erro_retorno_invalido = "Não foi possível recuperar um retorno válido.";"></script>
+		<script language="javascript" type="text/javascript">
+$(function (){ BRAdmin.ContatoForms.iniciar(); });
+</script>
+		<!--<script src="http://gadgets2.virtualtarget.com.br/index.dma/OptIn"></script>
+		<script>
+			VTG.FormId = "newsForm";
+			VTG.Key = "UXOqtD5NNba9txAyGlo59EoNkKGxKuoh4DZYYaxLKOXqY37k/LEHvbpP/qOC0iEOdhp46zl5vVDXbalt4Vwss0qnVO7r5IltirbSM9oCRIgV0XWBhZxXeIBB4cc/9UkQH2mLaoslO/4EVWwcqndBIHeDIkXCO2Js982HkYauB2k=";
+			VTG.Debug = true;
+			VTG.ListId = Array("12");
+			VTG.Callback = FuncaoCallback;
+			function FuncaoCallback(codigo, mensagem) {
+					$("#statusNews").slideDown();
+					$("#statusNews").html("<img src='images/loader.gif' alt='Enviando' />");
+				if ($("#emailnews").val() == "") {
+					$("#statusNews").html("Informe o seu e-mail");
+					$("#emailnews").focus();
+					return false;
+				}
+			    if (parseInt(codigo) == 1) {
+			        $("#statusNews").html("E-mail cadastrado com sucesso!");
+			}else {
+			        $("#statusNews").html("Não foi possível cadastrar o e-mail<br>" + codigo + " " + mensagem);
+			    }
+			    $("#newsForm").trigger("reset");
+			}
+		</script>-->
+		<!--[if lt IE 10]>
+			<div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+			<script src="js/html5shiv.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<!-- Page-->
+		<div class="page">
+			<!-- SVG Sprite-->
+			<div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<symbol id="ripply-scott" viewbox="0 0 100 100">
+						<circle id="ripple-shape" cx="1" cy="1" r="1"></circle>
+					</symbol>
+				</svg>
+			</div>
+			<!-- /end sprite-->
+
+			<!--Page Header-->
+<header class="page-head">
+	<!-- ARCHEXPO’16-->
+	<section class="banner-home bg-fixed wow fadeIn abimad-black-bg no-select height-fix-120-min relativer wow fadeIn" data-wow-delay=".1s" style="overflow: hidden;">
+		
+<!-- 		<div id="subscribe-me" class="subscribe-me col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-push-3 col-md-push-3 col-lg-push-3">
+		 	<a href="#close" class="sb-close-btn" style="font-size: 30px;">x</a>
+			<h2>INSCREVA-SE</h2>
+			<p>Cadastre-se em nossa newsletter e fique por dentro de tudo o que acontece no setor.</p>
+	 		<form id="newsForm" action="" method="POST">
+			    <input type="email" vtid="EMAIL" name="emailnews" id="emailnews" placeholder="E-mail" required="required">
+			    <button type="button" class="abimad-red-bg white border red" onclick="javascript:VTG.VTG_Submit(null); return false;">INSCREVA-SE</button>
+	 		</form>
+	 		<div id="statusNews" class="col-xs-12 text-center" style="display: none;"></div>
+		</div> -->
+		
+		<!-- div para receber imagens da home -->
+		
+	 	<div class="container-home">
+			
+			<img src="images/banners-34/abimad-01.jpg" alt="ABIMAD">
+			<img src="images/banners-34/abimad-06.jpg" alt="ABIMAD">
+			<img src="images/banners-34/abimad-02.jpg" alt="ABIMAD">
+			<img src="images/banners-34/abimad-07.jpg" alt="ABIMAD">
+			<img src="images/banners-34/abimad-03.jpg" alt="ABIMAD">
+			<img src="images/banners-34/abimad-08.jpg" alt="ABIMAD">
+			<img src="images/banners-34/abimad-04.jpg" alt="ABIMAD">
+			<img src="images/banners-34/abimad-09.jpg" alt="ABIMAD">
+			<img src="images/banners-34/abimad-05.jpg" alt="ABIMAD">
+			<img src="images/banners-34/abimad-10.jpg" alt="ABIMAD">
+			
+			<!--<div class="player-tv">
+				<iframe src="https://www.youtube.com/embed/UME81BIrQzQ?controls=0&showinfo=0&autohide=1&rel=0&autoplay=1&loop=1&modestbranding=1&playlist=UME81BIrQzQ&mute=1" frameborder="0" allowfullscreen></iframe>
+			</div>-->
+		
+		</div>
+	 	<!-- fim div para receber imagens da home -->
+		
+		<div id="vidro-fume"></div>
+		
+		<div class="col-lg-4 col-md-8 absoluter pos-t-0-sm-and-down pos-t-0 col-xs-10 col-xs-offset-1 col-md-offset-1 wow fadeIn header-margin mt-0 row" id="texto-home">
+				<img src="images/abimad/abimad36.svg" alt="ABIMAD'36">
+			
+				<h3 class="text-xs-left text-sm-left col-md-8 col-sm-6 pt-10 white pb-10 f-700 mt-0 mb-0 visible-sm-block visible-md-block visible-lg-block wow fadeIn text-xs-center" data-wow-delay=".7s">18 A 21 DE JULHO DE 2023</h3>
+
+				<p class="text-xs-left text-sm-left col-md-8 col-sm-6 white col-xs-12 mt-10 mb-10 wow fadeIn text-xs-center" data-wow-delay=".8s">São Paulo Expo</p>
+
+				<a href="/feira_abimad" class="abimad-white-bg white border ml-15 btn-abimad-home white border-3pt f-800 upper col-md-6 col-sm-12 col-xs-12 white mt-10 pt-10 pb-10 wow fadeIn fadeInHack text-center" data-wow-delay=".9s">Saiba mais</a>
+			
+			<p><a href="/credenciamento" class="abimad-red-bg border ml-15 btn-abimad-home red border-3pt f-800 upper col-md-6 col-sm-12 col-xs-12 white mt-10 pt-10 pb-10 text-center">Credenciamento</a></p>
+
+		</div>
+		<div class="absoluter pos-t-0 pos-r-20 row mt-0">
+			<div class="rd-navbar-wrap">
+				<nav data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" class="rd-navbar">
+					<div class="rd-navbar-inner zindex-10">
+						
+						<!-- RD Navbar Panel-->
+						<div class="rd-navbar-panel">
+							<!-- RD Navbar Toggle-->
+							<button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span></button>
+						</div>
+						<div class="rd-navbar-nav-wrap">
+							<!-- RD Navbar Nav-->
+							<ul class="rd-navbar-nav white">
+								<li>
+									﻿<a href="#" class="white dropdown-toggle" data-toggle="dropdown">
+	<small><span class="mr-10">Login</span><span class="fa fa-user-circle-o white"></span></small>
+</a>
+
+<ul class="dropdown-menu pull-right p-40 row col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 abimad-black-bg-09-opacity mt-40 box_login_recuperar">
+<li class="white f-300 pl-0 text-14 mr-10 title_login">Área Restrita<i class="fa fa-lock ml-10"></i></li>
+<li class="white f-300 pl-0 text-14 mr-10 title_recuperar">Recuperar senha<i class="fa fa-lock ml-10"></i></li>
+	<li class="abimad-black">
+		<form action="/index/entrar" method="POST" class="form_login">
+			<input type="text" name="email" placeholder="E-mail" class="no-border p-20 pl-0 border-bottom white col-xs-12 transparent-bg text-14">
+			<input type="password" name="senha" placeholder="Senha" class="no-border p-20 pl-0 border-bottom white col-xs-12 transparent-bg text-14 mb-20">
+			<button type="submit" class="col-xs-12 p-10 pl-20 pr-20 abimad-red-bg text-14 white">Ok</button>
+		</form>
+		<form action="/index/recuperar_senha" method="POST" class="form_recuperar">
+			<input type="text" name="email" placeholder="E-mail" class="no-border p-20 pl-0 border-bottom white col-xs-12 transparent-bg text-14 mb-20">
+			<button type="submit" class="col-xs-12 p-10 pl-20 pr-20 abimad-red-bg text-14 white">Recuperar</button>
+		</form>
+	</li>
+	<li class="col-xs-12 col-12 white pt-20 text-center text-14 bt_recuperar">Esqueceu sua senha? <a href="#form_recuperar" class="white mt-10 no-slash upper f-600 ml-0">Clique aqui</a></li>
+	<li class="col-xs-12 col-12 white pt-20 text-center text-14 bt_login"><a href="#form_login" class="white mt-10 no-slash upper f-600 ml-0">Fazer login</a></li>
+</ul>
+
+								</li>
+								<li>
+									<a href="/BRAdmin.ContatoForms.erro_retorno_desconhecido%20=/i18n=PT" class="white dropdown-toggle" data-toggle="dropdown">
+	<small>Idioma<i class="ml-10 fa-flag"></i></small>
+</a>
+<ul class="dropdown-menu row col-lg-1 col-md-2 col-sm-3 col-xs-12 abimad-black-bg-09-opacity pull-right mt-10">
+	<li class=" white f-300 pt-10 pb-10 text-14 text-center"><a href="/BRAdmin.ContatoForms.erro_retorno_desconhecido%20=/i18n=PT-Br" class="no-slash white ml-0 idioma">PT <i class="brazil-flag white"></i></a></li>
+	<li class=" white f-300 pt-10 pb-10 text-14 text-center"><a href="/BRAdmin.ContatoForms.erro_retorno_desconhecido%20=/i18n=EN" class="no-slash white ml-0 idioma">EN <i class="us-flag white"></i></a></li>
+	<li class=" white f-300 pt-10 pb-10 text-14 text-center"><a href="/BRAdmin.ContatoForms.erro_retorno_desconhecido%20=/i18n=ES" class="no-slash white ml-0 idioma">ES <i class="es-flag white"></i></a></li>
+</ul>
+
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</section>
+
+	<!-- RD Navbar-->
+	<div class="rd-navbar-wrap">
+		<nav data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" class="rd-navbar">
+			<div class="rd-navbar-inner">
+				<!-- RD Navbar Panel-->
+				<div class="rd-navbar-panel">
+					<!-- RD Navbar Toggle-->
+					<button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span></button>
+					<!-- RD Navbar Brand-->
+					<div class="rd-navbar-brand col-sm-12 col-md-4 pt-20 wow fadeIn">
+						<a href="/" class="brand-name">
+							<div class="brand-svg"></div>
+						</a>
+					</div>
+				</div>
+				<div class="rd-navbar-nav-wrap">
+					<!-- RD Navbar Nav-->
+					<ul class="rd-navbar-nav">
+						
+<li class="wow fadeInUp" data-wow-delay=".1s"><a href="/feira_abimad">Feira</a></li>
+<li class="wow fadeInUp" data-wow-delay=".2s"><a href="/associados">Associados</a></li>
+<li class="wow fadeInUp" data-wow-delay=".3s"><a href="/revista">Revista</a></li>
+<li class="wow fadeInUp" data-wow-delay=".4s"><a href="/programas_exportacao">Abimad Export</a></li>
+<li class="wow fadeInUp" data-wow-delay=".5s"><a href="/institucional">Institucional</a></li>
+<li class="wow fadeInUp" data-wow-delay=".6s"><a href="/noticias">Imprensa</a></li>
+<li class="wow fadeInUp" data-wow-delay=".7s"><a href="/#contacts">Contato</a></li>
+<li class="hidden-sm hidden-md hidden-lg hidden-xl">
+<a href="#" class="white dropdown-toggle" data-toggle="dropdown">
+		<span class="mr-10 text-center">Login</span><span class="fa fa-user-circle-o white"></span>
+	</a>
+	
+	<ul class="dropdown-menu pull-right p-40 row col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 abimad-black-bg-09-opacity mt-40 box_login_recuperar">
+		<li class="white f-300 pl-0 text-14 title_login">&Aacute;rea Restrita.  <span class="fa fa-lock"></span></li>
+		<li class="white f-300 pl-0 text-14 title_recuperar">Recuperar senha.  <span class="fa fa-lock"></span></li>
+		<li class="abimad-black">
+			<form action="/index/entrar" method="POST" class="form_login">
+				<input type="text" name="email" placeholder="E-mail" class="no-border p-20 pl-0 border-bottom white col-xs-12 transparent-bg text-14">
+				<input type="password" name="senha" placeholder="Senha" class="no-border p-20 pl-0 border-bottom white col-xs-12 transparent-bg text-14 mb-20">
+				<button type="submit" class="col-xs-12 p-10 pl-20 pr-20 abimad-red-bg text-14 white">Ok</button>
+			</form>
+			<form action="/index/recuperar_senha" method="POST" class="form_recuperar">
+				<input type="text" name="email" placeholder="E-mail" class="no-border p-20 pl-0 border-bottom white col-xs-12 transparent-bg text-14 mb-20">
+				<button type="submit" class="col-xs-12 p-10 pl-20 pr-20 abimad-red-bg text-14 white">Recuperar</button>
+			</form>
+		</li>
+		<li class="col-xs-12 col-12 white pt-20 text-center text-14 bt_recuperar">Esqueceu sua senha? <a href="#form_recuperar" class="white mt-10 no-slash upper f-600 ml-0">Clique aqui</a></li>
+		<li class="col-xs-12 col-12 white pt-20 text-center text-14 bt_login"><a href="#form_login" class="white mt-10 no-slash upper f-600 ml-0">Fazer login</a></li>
+	</ul>
+</li>
+<li class="hidden-sm hidden-md hidden-lg hidden-xl">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		PT<span class="ml-10 brazil-flag white"></span>
+	</a>
+	<ul class="dropdown-menu row col-lg-1 col-md-2 col-sm-3 col-xs-12 abimad-black-bg pull-right mt-10">
+		<li class="white f-300 pt-10 pb-10 text-14 text-center text-xs-left"><a href="/BRAdmin.ContatoForms.erro_retorno_desconhecido%20=/i18n=EN" class="no-slash white ml-0">EN <i class="us-flag white"></i></a></li>
+		<li class="white f-300 pt-10 pb-10 text-14 text-center text-xs-left"><a href="/BRAdmin.ContatoForms.erro_retorno_desconhecido%20=/i18n=ES" class="no-slash white ml-0">ES <i class="es-flag white"></i></a></li>
+	</ul>
+</li>
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>
+<!-- Page Content-->
+
+<main class="page-content">
+	<!-- texto de introdução -->
+	<section id="about" data-type="anchor" class="section-140">
+		<div class="shell">
+			<div class="range range-lg-middle text-lg-left">
+				<div class="col-lg-10 col-lg-offset-1">
+					<div class="col-xs-12 border-bottom black">
+						<img src="images/abimad/abimad36-p.svg" alt="ABIMAD'36" class="col-xs-12 col-sm-4 pb-40 pl-0">
+					</div>
+					<div class="col-md-6 col-sm-12 border-right black hidden-sm hidden-xs">
+						<p class="f-800 text-left text-24 lh-32 mt-10">A feira acontecerá no São Paulo Expo, em São Paulo</p>
+					</div>
+					<div class="col-sm-12 hidden-md hidden-lg">
+						<p class="f-800 text-center text-24 lh-32 mt-10">A feira acontecerá no São Paulo Expo, em São Paulo</p>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 mb-50">
+						<p class="mt-20 text-center">18 A 21 DE JULHO DE 2023</p>
+					</div>
+					<div class="postfix-lg-right--30 offset-lg-top-37 text-left col-xs-12">
+					  <p>&nbsp;</p>
+					  <p>Com quase 20 anos de história, a ABIMAD é a principal feira de móveis e acessórios de alta decoração da América Latina e a única do setor focada em negócios. Direcionada a lojistas e compradores do Brasil e do exterior, a feira tem duas edições anuais, que trazem o melhor do design brasileiro e as principais tendências internacionais, através dos seus mais de 130 expositores, distribuídos em uma área de 50 mil m².<br>
+					  </p>
+					  
+						<p><strong>Para mais informações sobre as regras de entrada na feira, acesse a página de <a href="/credenciamento">credenciamento</a>.</strong></p>
+						<p>&nbsp;</p>
+					</div>
+					<div class="col-xs-12 mt-30 border-top border-bottom border-3pt black">
+	<ul class="text-center f-800 lh-24">
+		<li class="pt-20 pb-20 col-sm-12 col-md-3 no-border-md-and-down">
+			<a class="center-tab" href="/feira_abimad">Feira ABIMAD</a>
+		</li>
+		<li class="pt-20 pb-20 col-sm-12 col-md-3">
+			<a class="center-tab" href="/agencia_turismo_oficial">Ag&ecirc;ncia de Viagens Oficial</a>
+		</li>
+		<li class="pt-20 pb-20 col-sm-12 col-md-3">
+			<a class="center-tab" href="/expositores">Expositores</a>
+		</li>
+		<li class="pt-20 pb-20 col-sm-12 col-md-3">
+			<a href="/hoteis_credenciados" class="center-tab">Hot&eacute;is Credenciados</a>
+		</li>
+		<li class="pt-20 pb-20 col-sm-12 col-md-3 border-top black">
+			<a class="center-tab" href="/como_chegar">Como Chegar</a>
+		</li>
+		<li class="pt-20 pb-20 col-sm-12 col-md-3 border-top black">
+			<a class="center-tab" href="/credenciamento">Credenciamento</a>
+		</li>
+		<li class="pt-20 pb-20 col-sm-12 col-md-3 border-top black">
+			<a class="center-tab" href="/perguntas_frequentes">Perguntas Frequentes</a>
+		</li>
+		<li class="pt-20 pb-20 col-sm-12 col-md-3 border-top black">
+			<a class="center-tab" href="/area_expositor">&Aacute;rea do Expositor</a>
+		</li>
+	</ul>
+</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Números da feira -->
+	<section class="section-55 section-md-90 bg-fixed bg-image bg-image-5 section-md-bottom-100 flex-bg">
+		<div class="shell">
+			<div class="col-md-10 col-md-offset-1 border-top white no-border-md-and-down">
+				<div class="col-md-4 border-right white no-border-md-and-down text-xs-center">
+					<p class="white h1 pb-30 col-md-12 col-sm-6 pt-30 contador">146</p>
+					<p class="white pb-30 col-md-12 col-sm-6 lh-32 wow fadeInUp" data-wow-delay=".1s">Expositores confirmados nesta edição</p>
+				</div>
+				<div class="col-md-4 border-right white no-border-md-and-down text-xs-center">
+					<p class="white h1 pb-30 col-md-12 col-sm-6 pt-30 contador">20000</p>
+					<p class="white pb-30 col-md-12 col-sm-6 lh-32 wow fadeInUp" data-wow-delay=".2s">Visitantes deverão passar pela feira</p>
+				</div>
+				<div class="col-md-4 white no-border-md-and-down text-xs-center">
+					<p class="white h1 pb-30 col-md-12 col-sm-6 pt-30 contador">1000</p>
+					<p class="white pb-30 col-md-12 col-sm-6 lh-32 wow fadeInUp" data-wow-delay=".3s">Convidados VIP</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Mapa da feira -->
+	<section id="mapa" data-type="anchor" class="section-55 section-md-90">
+		<h3 class="h1-responsive abimad-black text-xs-center">Mapa da feira</h3>
+		<div style="height: auto; overflow: auto; width:100%;background-color: #FFF;"><br>
+
+			<div style="height: auto; overflow: auto; width:100%;"> <a href="https://www.abimad.com.br/docs/ABIMAD35_Planta.pdf" target="_blank"><p align="center"><img src="../images/abimad_mapa_35-v2.jpg" width="1200px" alt="Planta ABIMAD'35"></p></a>
+	      </div>
+			<div class="col-xs-12 mt-30 mb-30 pl-20 pr-20 mt-20 col-md-6 col-md-offset-3 col-sm-offset-2 col-sm-8">
+				<a href="https://www.abimad.com.br/docs/ABIMAD35_Planta.pdf" target="_blank" class="pt-10 col-xs-12 pb-10 text-center abimad-black-bg white upper">Clique aqui para abrir o mapa ampliado em PDF</a>
+			</div>
+
+		</div>
+	</section>
+</main>
+
+<section data-type="anchor" class="section-55 section-md-90 section-md-bottom-63 bg-image-5 bg-fixed">
+	<div class="shell height-700" style="position: relative;">
+		<div id="publicidade">
+			<span>PUBLICIDADE</span>
+			<div>
+				<a data-index="1" href="https://issuu.com/abimad4/docs/hall-63" class="on" target="_blank"><img src="images/Banner_Hall63.jpg" alt="Revista Hall 63"></a>
+				<a data-index="2" href="https://issuu.com/abimad4/docs/hall-63" class="on" target="_blank"><img src="images/Banner_Hall63.jpg" alt="Revista Hall 63"></a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section-55">
+	<div class="shell">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-3">
+				<p class="text-xs-left text-sm-center f-800">Apoio Institucional</p>
+                <a href="http://beneficiosp.com.br" target="_blank"><img src="images/visite-sp.svg" alt="Beneficio SP"></a>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 border-left-md black">
+				<p class="text-xs-left text-sm-center f-800">Apoio Feira ABIMAD</p>
+                <p align="center"><a href="https://www.saopauloexpo.com.br/pt/" target="_blank"><img src="images/sao-paulo-exhibition.png" alt="São Paulo Expo" width="200"></a>
+					<!--<a href="http://www.abimovel.com/" target="_blank"><img src="images/Abimovel.png" alt="Abimóvel" width="130"></a>-->
+					</p>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3 border-left-md black">
+			  <p class="text-xs-left text-sm-center f-800">Cia. Aérea Oficial</p>
+                <a href="https://www.voegol.com.br" target="_blank"><img src="images/gol-airlines.svg" alt="Voe GOL"></a>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Sign up for online exclusives-->
+
+<section class="section-90 section-md-90 section-lg-bottom-140 abimad-black-bg white" id="contacts">
+	<div class="shell">
+		<div class="row">
+			<div class="col-xs-12 col-lg-10 col-lg-offset-1">
+				<div class="col-xs-12">
+					<h3 class="h1-responsive col-md-5 col-sm-12 col-xs-12 col-md-offset-1  text-xs-center text-md-left mt-20">Contato</h3>
+					<div class="col-md-1 mt-20 hidden-xs hidden-sm">
+						<div class="col-xs-6 border-right white height-100"></div>
+						<div class="col-xs-6"></div>
+					</div>
+					<p class="col-md-4 text-xs-center text-md-left lh-24 mt-20 ib section-bottom-55">Telefone: +55 (11) 5505-1214 <br>
+				    Whatsapp Business: <a href="https://api.whatsapp.com/send?phone=5511951635502" target="_blank">+55 (11) 95163-5502<br>
+				    </a>E-mail: <a href="mailto:abimad@abimad.com.br" target="_blank">abimad@abimad.com.br</a></p>
+					<!-- Rd Mailform result field-->
+				</div>
+				<div class="rd-mailform-validate col-md-12"></div>
+				<!-- RD Mailform-->
+				<form name="contato_form" data-result-class="rd-mailform-validate" data-form-type="contact" method="post" action="/Index/enviar_contato" class="rd-mailform col-md-12">
+					<div class="">
+						<div class="col-xs-12 col-sm-10 col-sm-offset-1 pt-10 pb-10 mb-30 contato_retorno"></div><!-- Recebe a mensagem JavaScript de retorno do envio do formulário -->
+						<div class="col-xs-12 col-sm-10 col-sm-offset-1 pt-10 pb-10 relativer">
+							<div class="inputBox">
+								<!-- <div class="white-bg height-50 col-xs-12"></div> -->
+								<span class="absoluter fa-angle-down text-24 pos-r-30 pos-t-20" style="pointer-events: none;"></span>
+								<select name="destinatario_lista" id="destinatario_lista" class="p-20 border white text-18 inputChild" data-constraints="@SelectRequired" style="width: 100%;">
+									<option value="">Selecione o departamento</option>
+									<option value="1" >Compras</option>
+									<option value="2" >Comunicação e Marketing</option>
+									<option value="3" >Fale com o Presidente</option>
+									<option value="5" >Feira Abimad</option>
+									<option value="6" >Imprensa</option>
+									<option value="4" >Internacional</option>
+									<option value="7" >Outros</option>
+									<option value="8" >Revista Hall</option>
+									<!-- 
+										<option>Compras</option>
+										<option>Comunica&#231;&#227;o e Marketing</option>
+										<option>Fale com o Presidente</option>
+										<option>Internacional</option>
+										<option>Feira Abimad</option>
+										<option>Imprensa</option>
+										<option>Outros</option>
+									-->
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-10 col-sm-offset-1 col-xs-12 pt-10 pb-10">
+							<input type="text" name="nome" value="" data-constraints="@NotEmpty" placeholder="Nome" class="border-bottom white">
+						</div>
+						<div class="col-sm-5 col-sm-offset-1 col-xs-12 pt-10 pb-10">
+							<input type="email" name="email" value="" data-constraints="@NotEmpty @Email" placeholder="E-mail" class="border-bottom white">
+						</div>
+						<div class="col-sm-5 col-xs-12 pt-10 pb-10">
+							<input type="phone" name="telefone" value="" data-constraints="@Phone" placeholder="Telefone" class="border-bottom white">
+						</div>
+						<div class="col-sm-10 col-sm-offset-1 col-xs-12 pt-10 pb-10">
+							<input type="text" name="assunto" value="" data-constraints="@NotEmpty" placeholder="Assunto" class="border-bottom white">
+						</div>
+						<div class="col-sm-10 col-sm-offset-1 col-xs-12 p-10 mt-30">
+							<textarea name="mensagem" class="border white" placeholder="Mensagem" style="padding: 0px 10px;"></textarea> 
+						</div>
+						<div class="col-sm-10 col-sm-offset-1 col-xs-12 pt-10 pb-10">
+							<div class="border-bottom white inputBox">
+								<input type="checkbox" id="autorizar" name="autorizar" value="1" data-constraints="@CheckedRequired" class="inputChild" style="width: auto; float: left; margin-right: 10px;">
+								<label for="autorizar">Autorizo a ABIMAD a utilizar os dados fornecidos neste formulário exclusivamente para os fins aqui mencionados.</label>
+							</div>
+						</div>
+					</div>
+					<div class="text-xs-center col-xs-12 col-sm-4 col-sm-offset-4 pl-10 pr-10">
+						<button type="submit" class="col-xs-12 btn btn-primary abimad-red-bg to-white-hover border border-3pt red">Enviar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- <div class="pop-up-container">
+	<div class="pop-up">
+	  <p align="left"><strong>CONTATO DURANTE A ABIMAD'35</strong></p>
+	  <p align="left">Informamos que no período entre 27 de janeiro a 03 de fevereiro, em razão da feira ABIMAD'35, atenderemos nos seguintes números de telefone:</p>
+		
+	  <p>Pavilhão: +55 11 5067-6799 / 5067-6798<br>
+		 Whatsapp Business: <a href="https://api.whatsapp.com/send?phone=5511951635502" target="_blank">+55 11 95163-5502</a> <a href="https://api.whatsapp.com/send?phone=5511951635502" target="_blank"><img src="../images/icon-whatsapp.png" width="16" height="16" alt="Fale com a ABIMAD pelo Whatsapp"/></a></p>
+		<p align="left">Atenciosamente,
+		<p align="left">Equipe ABIMAD</p>
+		<button id="fechar-peq" class="abimad-black">+</button>
+		<button id="fechar" class="abimad-red-bg white col-xs-12 border red pt-10 pb-10 mt-40">Acessar o site</button>
+	</div>
+</div> -->
+<!-- Page Footer-->
+		<footer class="fixed-pos-bottom-sm-and-up w-100-vw text-center">
+			<div class="absoluter footer-menu">
+				<!-- <a href="#" class="inscreva-se"><small class="abimad-black upper">Newsletter</small><img src="images/icon_Newsletter_red.svg" style="
+				height: 17px; margin: 0px 8px;"></a> -->
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><small class="abimad-black upper">Login</small><i class="ml-10 fa fa-user-circle-o abimad-red circle" aria-hidden="true"></i></a>
+				<ul class="dropdown-menu dropdown-top pull-right p-40 row abimad-black-bg-09-opacity no-drawer-animation box_login_recuperar">
+					<li class="white f-300 pl-0 text-14 title_login">Área Restrita  <span class="fa fa-lock"></span></li>
+					<li class="white f-300 pl-0 text-14 title_recuperar">Recuperar senha  <span class="fa fa-lock"></span></li>
+<li class="abimad-black">
+						<form action="/index/entrar" method="POST" class="form_login">
+							<input type="text" name="email" placeholder="E-mail" class="no-border p-20 pl-0 border-bottom white col-xs-12 transparent-bg text-14">
+							<input type="password" name="senha"  placeholder="Senha" class="no-border p-20 pl-0 border-bottom white col-xs-12 transparent-bg text-14 mb-20">
+							<button type="submit" class="col-xs-12 p-10 pl-20 pr-20 abimad-red-bg text-14 white border red border-3pt f-800">OK</button>
+						</form>
+						<form action="/index/recuperar_senha" method="POST" class="form_recuperar">
+							<input type="text" name="email" placeholder="E-mail" class="no-border p-20 pl-0 border-bottom white col-xs-12 transparent-bg text-14 mb-20">
+							<button type="submit" class="col-xs-12 p-10 pl-20 pr-20 abimad-red-bg text-14 white border red border-3pt f-800">RECUPERAR</button>
+						</form>
+					</li>
+					<li class="col-xs-12 col-12 white pt-20 text-center text-14 bt_recuperar">Esqueceu sua senha? <a href="#form_recuperar" class="white mt-10 no-slash upper f-600 ml-0">Clique aqui</a></li>
+					<li class="col-xs-12 col-12 white pt-20 text-center text-14 bt_login"><a href="#form_login" class="white mt-10 no-slash upper f-600 ml-0">Fazer login</a></li>
+<div class="pointer-container">
+						<div class="pointer"></div>
+					</div>
+				</ul>
+			</div>
+			<div class="abimad-black-bg abimad-footer col-xs-12 p-20">
+				<div class="col-xs-12 col-sm-7 col-md-8 col-lg-5 col-lg-offset-1 text-xs-center text-sm-left text-md-left">
+					<small class="white">Rua Geraldo Flausino Gomes, 42 - Cj. 112 - Edifício Jafet - Cidade Monções - São Paulo/SP <sub class="ml-10" style="margin-right: -10px;"></sub></small>
+				</div>
+				<div class="col-xs-12 col-sm-2 text-sm-center col-md-2 col-lg-3 white text-xs-center text-sm-center text-md-center p-0">
+					<a href="/politica_de_privacidade" target="_blank"><small class="white">Política de Privacidade</small></a>
+				</div>
+				<div class="col-xs-12 col-sm-3 text-sm-right col-md-2 col-lg-2 col-lg-pull-1 white text-xs-center text-sm-center text-md-right p-0">
+					<a href="https://www.facebook.com/FeiraAbimad/" target="_blank"><i class="white icon fa-facebook ml-10 mr-10"></i></a>
+					<a href="" target="_blank"><i class="white icon fa-twitter ml-10 mr-10"></i></a>
+					<a href="https://www.instagram.com/abimadfeiras/" target="_blank"><i class="white icon fa-instagram ml-10 mr-10"></i></a>
+					<a href="https://www.youtube.com/channel/UCG5EV69wCvX9lsec2Mv9FlA" target="_blank"><i class="white icon fa-youtube-play ml-10 mr-10"></i></a>
+				</div>
+				<div class="col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-5 elemento-signature col-lg-1 col-lg-offset-0 relativer">
+					<a href="http://www.elementodesign.com.br" target="_blank"><img src="images/elemento_signature.svg" alt="" class="hover-elemento"></a>
+				</div>
+
+			</div>
+			
+		</footer>
+	</div>
+	<div id="popin_cookies">
+		<div class="popin_cookies_banner">
+			<div class="popin_cookies_container">
+				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+					<p>Utilizamos cookies e tecnologias semelhantes de acordo com nossa <a href="/politica_de_privacidade" target="_blank">Política de Privacidade</a> e, ao continuar navegando, você concorda com estas condições.</p>
+				</div>
+				<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-center popin_cookies_nav">
+					<a class="popin_cookies_button popin_cookies_more border border-3pt to-white-hover f-800 white col-xs-12 border pt-10 pb-10">Configurar</a>
+				</div>
+				<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-center popin_cookies_nav">
+					<a class="popin_cookies_button popin_cookies_accept abimad-red-bg border red border-3pt to-white-hover f-800 white col-xs-12 border red pt-10 pb-10">OK</a>
+				</div>
+			</div>
+		</div>
+		<div class="popin_cookies_box">
+			<button type="button" class="popin_cookies_close">
+				<svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+				<span>Fechar</span>
+			</button>
+			<div class="popin_cookies_body">
+				<h4>Parâmetros de Privacidade</h4>
+				<p>Este site armazena e/ou acessa informações em seu dispositivo através de Cookies para melhorar sua experiência enquanto você navega pelo site. Os cookies que são categorizados como necessários são armazenados no seu navegador, pois são essenciais para o funcionamento das funcionalidades básicas do site. Também usamos cookies de terceiros que nos ajudam a analisar e entender como você usa este site. Esses cookies serão armazenados no seu navegador apenas com o seu consentimento. Se você tiver mais perguntas, pode visitar a “<a href="/politica_de_privacidade" target="_blank">Política de Privacidade</a>” em nossa página.</p>
+				<ul class="popin_cookies_options">
+					<li>
+						<div class="popin_cookies_title">
+							<h5>Necessários</h5>
+							<span class="popin_cookies_fixed">Sempre Habilitado</span>
+						</div>
+						<div class="popin_cookies_content">
+							<p>Cookies estritamente necessários para o funcionamento adequado do site. Esta categoria inclui apenas cookies que garantem funcionalidades básicas da ferramenta e recursos de segurança.</p>
+						</div>
+					</li>
+					<li>
+						<div class="popin_cookies_title">
+							<h5>Analytics</h5>
+							<div class="popin_cookies_switch">
+								<input type="checkbox" name="cookies_analytics" id="cookies_analytics" />
+								<label for="cookies_analytics"><span>Habilitar</span></label>
+							</div>
+						</div>
+						<div class="popin_cookies_content">
+							<p>Este site usa o Google Analytics para medir o desempenho do conteúdo e melhorar nosso serviço.</p>
+						</div>
+					</li>
+					<li>
+						<div class="popin_cookies_title">
+							<h5>Vídeos</h5>
+							<div class="popin_cookies_switch">
+								<input type="checkbox" name="cookies_videos" id="cookies_videos" />
+								<label for="cookies_videos"><span>Habilitar</span></label>
+							</div>
+						</div>
+						<div class="popin_cookies_content">
+							<p>Usamos o YouTube para exibir alguns conteúdos em vídeo.</p>
+						</div>
+					</li>
+					<li>
+						<div class="popin_cookies_title">
+							<h5>Funcional</h5>
+							<div class="popin_cookies_switch">
+								<input type="checkbox" name="cookies_functional" id="cookies_functional" />
+								<label for="cookies_functional"><span>Habilitar</span></label>
+							</div>
+						</div>
+						<div class="popin_cookies_content">
+							<p>Utilizamos serviços terceirizados para interações com redes sociais. Este recurso só funcionará com cookies funcionais habilitados.</p>
+						</div>
+					</li>
+				</ul>
+				<a class="popin_cookies_button popin_cookies_save border border-3pt to-white-hover f-800 red border pt-10 pb-10 p-10">Confirmar</a>
+			</div>
+		</div>
+	</div>
+		<!-- Java script-->
+		<script src="js/core.min.js"></script>
+		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<!-- <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-587fcc6119702145"></script> -->
+		<script src="js/jquery.subscribe-better.min.js"></script>
+		<script src="js/swiper.jquery.min.js"></script>
+		<script src="/BRFw/js/jquery/jquery-ui-1.9.1.custom.js"></script>
+		<script src="/BRFw/js/jquery/jquery.brfw.js"></script>
+		<!-- <script src="/BRFw/js/jquery/datepicker/jquery-ui-timepicker-addon.js"></script> -->
+		<script src="/BRFw/js/jquery/meiomask.js"></script>
+		<script src="/BRFw/js/formulario.js"></script>
+		<script src="js/jquery.fancybox.js"></script>
+		<script src="js/jquery.fancybox.pack.js"></script>
+		<script src="js/script.js?v=1.2"></script>
+		<script src="js/retorno.js"></script>
+		<script src="js/noticias.js"></script>
+		<script src="js/mapa-interativo.js"></script>
+		<!-- <script src="js/youtubebackground.js"></script> -->
+		<!-- <script src="js/temporario.js"></script> -->
+		<script src="js/meus-dados.js"></script>
+		<script src="js/popin-cookies.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,68 @@
+
+function preparar(svg) {
+	//console.log(estandes_feira);
+    if (((typeof estandes_feira) === "object") && (estandes_feira instanceof Array)) // Array.isArray(estandes_feira)
+        for(var i = 0; i < estandes_feira.length; i++)
+            if ((estandes_feira[i].estande !== "") && (estandes_feira[i].produtos !== ""))
+                adicionarClasse(svg, estandes_feira[i].estande.toLowerCase().split(","), estandes_feira[i].produtos.split(","));
+}
+
+function adicionarClasse(svg, estandes, produtos) {
+    // Retirando espaços em branco entre os IDs de estandes
+	
+    var estandes_tratado = estandes.map(function(currentValue){
+        return currentValue.trim();
+    });
+    // Acrescentando "#" e, no caso de ruas com nome numeral, "s" no início
+    estandes_tratado = estandes_tratado.map(function(currentValue, index, arr){
+        if ( ! isNaN(parseInt(currentValue.substr(0, 1))))
+            currentValue = ("s" + currentValue);
+        return ("#" + currentValue).toUpperCase();
+    });
+	//console.log(estandes_tratado,produtos,svg);
+    // Pesquisa pelos IDs e preenche as classes
+    var estandes_ok = svg.querySelectorAll(estandes_tratado.join(" , "));
+	console.log(estandes_tratado,estandes_ok);
+    for (var i = 0; i < estandes_ok.length; i++) {
+        var $el = $(estandes_ok[i]);
+        var classes = $el.attr("class");
+        classes += (" p-" + produtos.join(" p-"));
+        $el.attr("class", classes);
+    }
+}
+
+function init() {
+	SVGRoot = null;
+	var mapa = document.getElementById("map");
+	if (mapa) {
+		SVGDoc = mapa.contentDocument;
+		if ( ! SVGDoc) {
+			SVGDoc = mapa.getSVGDocument();
+		}
+		SVGRoot = SVGDoc.documentElement;
+	}
+	if (SVGRoot) {
+
+    // Adiciona as classes de produtos no mapa
+    preparar(SVGRoot);
+
+    // Pesquisa os estandes para interação com o SELECT de produtos
+    var stands = SVGRoot.querySelectorAll(".stand");
+    $('#selectInterativoMapa').change(function() {
+		
+        var value = $("#selectInterativoMapa option:selected").val();
+		
+        for (var i = 0; i < stands.length; i++) {
+            var classe = $(stands[i]).attr("class");
+            var classes = classe.split(" ");
+            if($.inArray('p-' + value, classes) !== (-1))
+                stands[i].style.fill = "#880000";
+            else
+                stands[i].style.fill = "#9C9B9B";
+        }
+    });
+
+	}
+}
+
+window.addEventListener("load", init, false);

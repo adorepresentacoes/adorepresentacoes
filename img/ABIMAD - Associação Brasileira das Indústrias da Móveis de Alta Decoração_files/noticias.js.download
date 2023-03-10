@@ -1,0 +1,10 @@
+$(document).ready(function() {
+	$('div.noticia_item').mouseenter(function(){
+		$('div.chamada_pop_up').css('display','none');
+		$(this).find('div.chamada_pop_up').fadeIn('slow');
+	});
+	$('div.noticia_item').mouseleave(function(){
+		$(this).find('div.chamada_pop_up').fadeOut('fast');
+	});
+});
+

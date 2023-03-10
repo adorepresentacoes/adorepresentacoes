@@ -1,0 +1,75 @@
+// Testando a existência do Namespace do BRAdmin (e criando, se necessário)
+if (typeof(BRAdmin) === "undefined")
+	BRAdmin = {}; 
+
+// Testando a existência da Biblioteca dos formulários de Contato (e criando, se necessário)
+if (typeof(BRAdmin.ContatoForms) === "undefined")
+	BRAdmin.ContatoForms = {
+		// erro_retorno_desconhecido: "", // Propriedade carregada dinamicamente (i18n)
+		// erro_retorno_invalido: "", // Propriedade carregada dinamicamente (i18n)
+		iniciado: false, // Semáforo de execução do AJAX
+		contatoRetornar: function($obj, msg) { // Exibe o retorno o AJAX
+			if ($obj.length) {
+				if ($obj.is(':visible'))
+					$obj.slideUp('slow', function() {
+						BRAdmin.ContatoForms.contatoRetornar($obj, msg);
+					});
+				else
+					$obj.text(msg).slideDown('slow');
+			} else
+				alert(msg);
+		}, 
+		enviar: function($form) { // Envia o formulário
+			var $div_retorno = $form.find(".contato_retorno");
+			if ( ! $form.hasClass('processando')) {
+				$form.addClass('processando');
+				// Coleta dados e dispara o AJAX
+				$.ajax({ 
+						type: "POST", 
+						url: $form.attr('action'), 
+						data: ($form.serialize() + '&ajax=1'), 
+						complete: function(retorno){
+									$form.removeClass('processando');
+									if (retorno && retorno.responseText) {
+										var r = $.parseJSON(retorno.responseText);
+										if (r && r.status) {
+											$form.find("input , textarea").each(function() { $(this).val(""); });
+											// Exibir mensagem de sucesso!
+											BRAdmin.ContatoForms.contatoRetornar($div_retorno, r.msg);
+										} else if (r && r.msg) {
+											// Exibir mensagem de erro!
+											console.log(r.msg);
+											BRAdmin.ContatoForms.contatoRetornar($div_retorno, r.msg);
+										} else {
+											// Exibir mensagem de erro!
+											erro = BRAdmin.ContatoForms.erro_retorno_desconhecido;
+											BRAdmin.ContatoForms.contatoRetornar($div_retorno, erro);
+										}
+									} else {
+										// Exibir mensagem de erro!
+										erro = BRAdmin.ContatoForms.erro_retorno_invalido;
+										BRAdmin.ContatoForms.contatoRetornar($div_retorno, erro);
+									}
+								}
+						});
+			}
+		}, 
+		iniciar: function() { // Inicia o monitoramento dos eventos
+			if ( ! BRAdmin.ContatoForms.iniciado) {
+				$("form.contato_form").each(function() { // $("form[name='contato_form']");
+					var $form = $(this);
+					// Monitora o envio do form para performar AJAX
+					$form.submit(function(){
+						BRAdmin.ContatoForms.enviar($form);
+						return false;
+					});
+					// Monitora o click na mensagem de retorno para fechá-la
+					var $div_retorno = $form.find(".contato_retorno");
+					$div_retorno.click(function() {
+						$(this).slideUp('slow');
+					});
+				});
+				BRAdmin.ContatoForms.iniciado = true;
+			}
+		}
+	};
